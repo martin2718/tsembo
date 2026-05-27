@@ -8,13 +8,14 @@
 
 ## How to compile
 
-- install dependencies
+- Install following dependencies
   - libpcap-devel
-  - libgtest-devel
-- configure cmake project
+  - gtest-devel
+  - run `sudo dnf install libpcap-devel gtest-devel`
+- Configure cmake project
   - go to the project folder
   - run `cmake -S . -B build`
-- build the application
+- Build the application
   - run `make -C build`
 
 ## How to run
