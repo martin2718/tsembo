@@ -2,7 +2,7 @@
 
 #include <cstring>
 
-namespace pcaproc {
+namespace tsembo {
 
 ParseResult MessageParser::parse(const std::uint8_t* data, std::size_t size,
                                  const TagCallback& cb) const {
@@ -63,4 +63,4 @@ ParseResult MessageParser::parse(const UdpPayload& payload, const TagCallback& c
     return parse(payload.data.data(), payload.data.size(), cb);
 }
 
-}  // namespace pcaproc
+}  // namespace tsembo

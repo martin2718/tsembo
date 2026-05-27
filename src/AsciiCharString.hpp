@@ -6,7 +6,7 @@
 #include <string>
 #include <type_traits>
 
-namespace pcaproc {
+namespace tsembo {
 
 // AsciiCharString<N>
 //
@@ -133,4 +133,4 @@ static_assert(std::is_trivially_copyable<AsciiCharString<16>>::value,
 static_assert(std::is_standard_layout<AsciiCharString<16>>::value,
               "AsciiCharString must be standard layout");
 
-}  // namespace pcaproc
+}  // namespace tsembo

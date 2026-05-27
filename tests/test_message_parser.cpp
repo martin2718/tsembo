@@ -7,14 +7,14 @@
 #include "MessageParser.hpp"
 #include "Messages.hpp"
 
-using pcaproc::ATagAddOrder;
-using pcaproc::MessageParser;
-using pcaproc::PacketHeader;
-using pcaproc::ParseStatus;
-using pcaproc::RTagReset;
-using pcaproc::TagView;
-using pcaproc::TTagSecondsTimestamp;
-namespace TagType = pcaproc::TagType;
+using tsembo::ATagAddOrder;
+using tsembo::MessageParser;
+using tsembo::PacketHeader;
+using tsembo::ParseStatus;
+using tsembo::RTagReset;
+using tsembo::TagView;
+using tsembo::TTagSecondsTimestamp;
+namespace TagType = tsembo::TagType;
 
 namespace {
 
@@ -151,15 +151,15 @@ TEST(MessageParser, DetectsMessageCountMismatch) {
 
 TEST(FlexTags, FixedSizes) {
     // Lengths from arrowhead FLEX MBO spec v0.6 sec. 3.2.2.
-    static_assert(sizeof(pcaproc::TTagSecondsTimestamp)       == 5,  "");
-    static_assert(sizeof(pcaproc::OTagTradingStatus)          == 18, "");
-    static_assert(sizeof(pcaproc::KTagExecutionSummary)       == 46, "");
-    static_assert(sizeof(pcaproc::ATagAddOrder)               == 26, "");
-    static_assert(sizeof(pcaproc::ETagOrderExecuted)          == 20, "");
-    static_assert(sizeof(pcaproc::CTagOrderExecutedWithPrice) == 29, "");
-    static_assert(sizeof(pcaproc::DTagOrderDelete)            == 11, "");
-    static_assert(sizeof(pcaproc::RTagReset)                  == 2,  "");
-    static_assert(sizeof(pcaproc::LTagControl)                == 3,  "");
+    static_assert(sizeof(tsembo::TTagSecondsTimestamp)       == 5,  "");
+    static_assert(sizeof(tsembo::OTagTradingStatus)          == 18, "");
+    static_assert(sizeof(tsembo::KTagExecutionSummary)       == 46, "");
+    static_assert(sizeof(tsembo::ATagAddOrder)               == 26, "");
+    static_assert(sizeof(tsembo::ETagOrderExecuted)          == 20, "");
+    static_assert(sizeof(tsembo::CTagOrderExecutedWithPrice) == 29, "");
+    static_assert(sizeof(tsembo::DTagOrderDelete)            == 11, "");
+    static_assert(sizeof(tsembo::RTagReset)                  == 2,  "");
+    static_assert(sizeof(tsembo::LTagControl)                == 3,  "");
     SUCCEED();
 }
 

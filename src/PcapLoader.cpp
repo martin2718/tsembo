@@ -8,7 +8,7 @@
 #include <cstring>
 #include <utility>
 
-namespace pcaproc {
+namespace tsembo {
 
 namespace {
 
@@ -287,4 +287,4 @@ std::vector<UdpPayload> PcapLoader::load_all_udp() {
     return out;
 }
 
-}  // namespace pcaproc
+}  // namespace tsembo

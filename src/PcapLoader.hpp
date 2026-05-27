@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-namespace pcaproc {
+namespace tsembo {
 
 // Represents the UDP payload of a single packet extracted from a pcap file.
 struct UdpPayload {
@@ -66,4 +66,4 @@ private:
     std::string last_error_;
 };
 
-}  // namespace pcaproc
+}  // namespace tsembo

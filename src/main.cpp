@@ -18,7 +18,7 @@ namespace {
 // price (book center price published in O tags). Indicative volume is
 // computed from the live book at reporting time.
 struct IssueState {
-    pcaproc::IndicativeVolumeBook book;
+    tsembo::IndicativeVolumeBook book;
     bool          have_price = false;
     std::uint64_t last_price = 0;
 };
@@ -84,23 +84,23 @@ int main(int argc, char** argv) {
         return 0;
     }
 
-    pcaproc::PcapLoader loader;
+    tsembo::PcapLoader loader;
     if (!loader.open(pcap_path)) {
         std::cerr << "Failed to open " << pcap_path << ": " << loader.last_error() << '\n';
         return 1;
     }
 
-    pcaproc::MessageParser parser;
+    tsembo::MessageParser parser;
     std::unordered_map<std::string, IssueState> by_issue;
 
-    const long n = loader.for_each_udp([&](const pcaproc::UdpPayload& pkt) {
+    const long n = loader.for_each_udp([&](const tsembo::UdpPayload& pkt) {
         parser.parse(pkt.data.data(), pkt.data.size(),
-                     [&](const pcaproc::PacketHeader& hdr,
-                         const pcaproc::TagView& v) {
+                     [&](const tsembo::PacketHeader& hdr,
+                         const tsembo::TagView& v) {
             // R tag (Reset) carries no issueCode -- apply globally.
-            if (v.tag == pcaproc::TagType::Reset) {
-                if (v.raw_size == sizeof(pcaproc::RTagReset) + 1) {
-                    const auto* r = reinterpret_cast<const pcaproc::RTagReset*>(v.raw + 1);
+            if (v.tag == tsembo::TagType::Reset) {
+                if (v.raw_size == sizeof(tsembo::RTagReset) + 1) {
+                    const auto* r = reinterpret_cast<const tsembo::RTagReset*>(v.raw + 1);
                     if (r->startEndFlag.value() == 1) {
                         for (auto& kv : by_issue) {
                             kv.second.book.reset();
@@ -110,7 +110,7 @@ int main(int argc, char** argv) {
                 }
                 return;
             }
-            if (v.tag == pcaproc::TagType::Control) {
+            if (v.tag == tsembo::TagType::Control) {
                 return;
             }
 
@@ -123,10 +123,10 @@ int main(int argc, char** argv) {
             // The Itayose O tag announces the auction reference price.
             // The crossing volume is computed from the live book at end of
             // run (orders accumulate after the O tag).
-            if (v.tag == pcaproc::TagType::TradingStatus &&
-                v.raw_size == sizeof(pcaproc::OTagTradingStatus) + 1) {
+            if (v.tag == tsembo::TagType::TradingStatus &&
+                v.raw_size == sizeof(tsembo::OTagTradingStatus) + 1) {
                 const auto* o =
-                    reinterpret_cast<const pcaproc::OTagTradingStatus*>(v.raw + 1);
+                    reinterpret_cast<const tsembo::OTagTradingStatus*>(v.raw + 1);
                 if (o->pricingMethod.value() == 1 /* Itayose */) {
                     state.last_price = o->bookCenterPrice.value();
                     state.have_price = true;

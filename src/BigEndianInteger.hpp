@@ -5,7 +5,7 @@
 #include <cstring>
 #include <type_traits>
 
-namespace pcaproc {
+namespace tsembo {
 
 // BigEndianInteger<T>
 //
@@ -147,4 +147,4 @@ static_assert(std::is_trivially_copyable<BigEndianBytes<6>>::value,
 static_assert(std::is_standard_layout<BigEndianBytes<6>>::value,
               "BigEndianBytes must be standard layout");
 
-}  // namespace pcaproc
+}  // namespace tsembo

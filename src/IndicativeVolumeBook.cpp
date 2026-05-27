@@ -1,6 +1,6 @@
 #include "IndicativeVolumeBook.hpp"
 
-namespace pcaproc {
+namespace tsembo {
 
 void IndicativeVolumeBook::reset() {
     orders_.clear();
@@ -184,4 +184,4 @@ IndicativeVolumeBook::indicative_volume_at(Price price) const {
     return (buy_total < sell_total) ? buy_total : sell_total;
 }
 
-}  // namespace pcaproc
+}  // namespace tsembo

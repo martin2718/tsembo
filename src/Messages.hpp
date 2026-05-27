@@ -23,7 +23,7 @@
     #define PCAPROC_PACKED
 #endif
 
-namespace pcaproc {
+namespace tsembo {
 
 PCAPROC_PACK_BEGIN
 
@@ -171,4 +171,4 @@ static_assert(sizeof(LTagControl) == 3);
 
 PCAPROC_PACK_END
 
-}  // namespace pcaproc
+}  // namespace tsembo

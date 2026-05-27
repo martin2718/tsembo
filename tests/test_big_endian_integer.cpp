@@ -5,7 +5,7 @@
 
 #include "BigEndianInteger.hpp"
 
-using pcaproc::BigEndianInteger;
+using tsembo::BigEndianInteger;
 
 TEST(BigEndianInteger, Layout) {
     static_assert(sizeof(BigEndianInteger<std::uint16_t>) == 2, "");

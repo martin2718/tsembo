@@ -7,7 +7,7 @@
 #include <cstdint>
 #include <functional>
 
-namespace pcaproc {
+namespace tsembo {
 
 // View of a single submessage (tag) inside a packet payload.
 //
@@ -54,10 +54,10 @@ struct ParseResult {
 //
 // Usage:
 //
-//     pcaproc::MessageParser parser;
-//     loader.for_each_udp([&](const pcaproc::UdpPayload& pkt) {
-//         parser.parse(pkt, [&](const pcaproc::PacketHeader& hdr,
-//                               const pcaproc::TagView& tag) {
+    //     tsembo::MessageParser parser;
+    //     loader.for_each_udp([&](const tsembo::UdpPayload& pkt) {
+    //         parser.parse(pkt, [&](const tsembo::PacketHeader& hdr,
+    //                               const tsembo::TagView& tag) {
 //             // dispatch on tag.tag, read tag.body / tag.body_size
 //         });
 //     });
@@ -78,4 +78,4 @@ public:
     ParseResult parse(const UdpPayload& payload, const TagCallback& cb) const;
 };
 
-}  // namespace pcaproc
+}  // namespace tsembo

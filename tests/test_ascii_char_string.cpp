@@ -7,8 +7,8 @@
 #include "AsciiCharString.hpp"
 #include "BigEndianInteger.hpp"
 
-using pcaproc::AsciiCharString;
-using pcaproc::BigEndianInteger;
+using tsembo::AsciiCharString;
+using tsembo::BigEndianInteger;
 
 TEST(AsciiCharString, DefaultIsEmpty) {
     AsciiCharString<8> s;
