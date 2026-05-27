@@ -30,3 +30,7 @@ Wrote 171 issues to 20241105_051.test.csv
 ```
 
 ## The application was built with help of Github copilot and cursor AI.
+
+## The output from the two test files are put under ./data:
+- 20241105_051.test.csv
+- 20241105_052.test.csv
